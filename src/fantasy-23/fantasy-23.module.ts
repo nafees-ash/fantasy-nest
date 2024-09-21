@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import {
-  IndividualFantasy,
-  IndividualFantasySchema,
+  IndividualFantasy23,
+  IndividualFantasySchema23,
 } from 'src/schema/Fantasy23.schema';
 import { Fantasy23Service } from './fantasy-23.service';
 import { Fantasy23Controller } from './fantasy-23.controller';
@@ -11,8 +11,8 @@ import { Fantasy23Controller } from './fantasy-23.controller';
   imports: [
     MongooseModule.forFeature([
       {
-        name: IndividualFantasy.name,
-        schema: IndividualFantasySchema,
+        name: IndividualFantasy23.name,
+        schema: IndividualFantasySchema23,
       },
     ]),
   ],

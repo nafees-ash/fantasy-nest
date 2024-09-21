@@ -10,7 +10,7 @@ import { Fantasy23Service } from './fantasy-23.service';
 import { CreateIndividualFantasyDto } from './dto/create-fantasy-23.dto';
 import mongoose from 'mongoose';
 
-@Controller('fantasy/23')
+@Controller('fantasy-23')
 export class Fantasy23Controller {
   constructor(private fantasy23Service: Fantasy23Service) {}
 

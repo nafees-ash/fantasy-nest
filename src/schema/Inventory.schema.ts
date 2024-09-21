@@ -14,17 +14,20 @@ export class Inventory {
   @Prop({ required: true })
   owner: string;
 
-  @Prop({ required: true })
+  @Prop()
   claimed: boolean;
 
   @Prop()
   club: string;
 
-  @Prop({ required: true })
+  @Prop()
   quality: string;
 
-  @Prop({ required: true })
+  @Prop()
   year: number;
+
+  @Prop()
+  account: string;
 }
 
 export const InventorySchema = SchemaFactory.createForClass(Inventory);

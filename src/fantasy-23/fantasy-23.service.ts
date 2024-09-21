@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { IndividualFantasy } from 'src/schema/Fantasy23.schema';
+import { IndividualFantasy23 } from 'src/schema/Fantasy23.schema';
 import { CreateIndividualFantasyDto } from './dto/create-fantasy-23.dto';
 
 @Injectable()
 export class Fantasy23Service {
   constructor(
-    @InjectModel(IndividualFantasy.name)
-    private fantasy23Model: Model<IndividualFantasy>,
+    @InjectModel(IndividualFantasy23.name)
+    private fantasy23Model: Model<IndividualFantasy23>,
   ) {}
 
   createFantasy23(createFantasy23Dto: CreateIndividualFantasyDto) {

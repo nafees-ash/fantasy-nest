@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ collection: 'fantasy_23' })
-export class IndividualFantasy {
+export class IndividualFantasy23 {
   @Prop({ required: true })
   username: string;
 
@@ -27,5 +27,5 @@ export class IndividualFantasy {
   prevRank: number;
 }
 
-export const IndividualFantasySchema =
-  SchemaFactory.createForClass(IndividualFantasy);
+export const IndividualFantasySchema23 =
+  SchemaFactory.createForClass(IndividualFantasy23);

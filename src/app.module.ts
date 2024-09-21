@@ -6,6 +6,9 @@ import { FantasyModule } from './fantasy/fantasy.module';
 import { InventoryModule } from './inventory/inventory.module';
 import { Fantasy23Module } from './fantasy-23/fantasy-23.module';
 import { Fantasy24Module } from './fantasy-24/fantasy-24.module';
+import { AppController } from './app.controller';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from './auth/auth.guard';
 
 @Module({
   imports: [
@@ -26,7 +29,12 @@ import { Fantasy24Module } from './fantasy-24/fantasy-24.module';
     Fantasy23Module,
     Fantasy24Module,
   ],
-  controllers: [],
-  providers: [],
+  controllers: [AppController],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
 })
 export class AppModule {}

@@ -3,12 +3,15 @@ import {
   Controller,
   Get,
   HttpException,
+  HttpStatus,
   Param,
+  Patch,
   Post,
 } from '@nestjs/common';
 import { InventoryService } from './inventory.service';
 import { CreateInventoryDto } from './dto/create-inventory.dto';
 import mongoose from 'mongoose';
+import { UpdateFundDto } from './dto/update-fund.dto';
 
 @Controller('inventory')
 export class InventoryController {
@@ -20,9 +23,23 @@ export class InventoryController {
     return this.inventoryService.createInventory(createInventoryDto);
   }
 
+  @Patch('fund')
+  async updateFund(@Body() updateFundDto: UpdateFundDto) {
+    try {
+      return await this.inventoryService.updateFund(updateFundDto.value);
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
+    }
+  }
+
   @Get()
   getInventorys() {
     return this.inventoryService.getInventorys();
+  }
+
+  @Get('fund')
+  getFund() {
+    return this.inventoryService.getFund();
   }
 
   @Get(':id')

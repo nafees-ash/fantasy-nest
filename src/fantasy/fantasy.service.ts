@@ -18,4 +18,8 @@ export class FantasyService {
   getFantasy() {
     return this.fantasyModel.find();
   }
+
+  getFantasyById(id: string) {
+    return this.fantasyModel.findById(id);
+  }
 }

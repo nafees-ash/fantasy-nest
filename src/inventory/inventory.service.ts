@@ -19,7 +19,25 @@ export class InventoryService {
     return this.inventoryModel.find();
   }
 
+  getFund() {
+    return this.inventoryModel.findOne({ type: 'fund' });
+  }
+
   getInventoryById(id: string) {
     return this.inventoryModel.findById(id);
+  }
+
+  async updateFund(value: number) {
+    const fund = await this.inventoryModel.findOne({ type: 'fund' });
+
+    if (!fund) {
+      throw new Error('Fund not found');
+    }
+
+    fund.value = value;
+
+    await fund.save();
+
+    return fund;
   }
 }
