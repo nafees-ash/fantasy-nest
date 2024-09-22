@@ -5,6 +5,7 @@ import {
   HttpException,
   Param,
   Post,
+  Query,
 } from '@nestjs/common';
 import { FantasyService } from './fantasy.service';
 import { CreateFantasyDto } from './dto/create-fantasy.dto';
@@ -21,7 +22,10 @@ export class FantasyController {
   }
 
   @Get()
-  getFantasy() {
+  getFantasy(@Query('year') year: number) {
+    if (year) {
+      return this.fantasyService.getFantasyByYear(year);
+    }
     return this.fantasyService.getFantasy();
   }
 

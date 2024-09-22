@@ -19,6 +19,10 @@ export class FantasyService {
     return this.fantasyModel.find();
   }
 
+  getFantasyByYear(year: number) {
+    return this.fantasyModel.findOne({ year });
+  }
+
   getFantasyById(id: string) {
     return this.fantasyModel.findById(id);
   }
