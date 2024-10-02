@@ -9,6 +9,7 @@ import { Fantasy24Module } from './fantasy-24/fantasy-24.module';
 import { AppController } from './app.controller';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth/auth.guard';
+import { NotificationModule } from './notification/notification.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { AuthGuard } from './auth/auth.guard';
     }),
     UsersModule,
     FantasyModule,
+    NotificationModule,
     InventoryModule,
     Fantasy23Module,
     Fantasy24Module,
