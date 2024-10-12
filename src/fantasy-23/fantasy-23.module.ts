@@ -18,5 +18,6 @@ import { Fantasy23Controller } from './fantasy-23.controller';
   ],
   providers: [Fantasy23Service],
   controllers: [Fantasy23Controller],
+  exports: [MongooseModule],
 })
 export class Fantasy23Module {}

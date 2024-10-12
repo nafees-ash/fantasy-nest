@@ -25,12 +25,70 @@ export class Fantasy24Service {
   }
 
   async getFantasy24Sorted(
-    sortBy: string,
+    sortBy: 'lastMd' | 'longJump' | string,
     order: 'asc' | 'desc' = 'desc',
     limit: number | undefined,
   ) {
+    const pipeline: any[] = [];
     const sortOption = {};
     sortOption[sortBy] = order === 'asc' ? 1 : -1;
+
+    if (sortBy === 'lastMd' || sortBy === 'longJump') {
+      if (sortBy === 'lastMd') {
+        pipeline.push({
+          $addFields: {
+            lastMdValue: {
+              $arrayElemAt: [
+                {
+                  $filter: {
+                    input: { $reverseArray: '$matchdays' },
+                    as: 'md',
+                    cond: { $gt: ['$$md', 0] },
+                  },
+                },
+                0,
+              ],
+            },
+          },
+        });
+
+        pipeline.push({
+          $sort: {
+            lastMdValue: order === 'asc' ? 1 : -1,
+          },
+        });
+      } else if (sortBy === 'longJump') {
+        pipeline.push({
+          $addFields: {
+            rankJump: { $subtract: ['$prevRank', '$currentRank'] },
+          },
+        });
+
+        pipeline.push({
+          $sort: {
+            rankJump: order === 'asc' ? 1 : -1,
+          },
+        });
+      } else {
+        pipeline.push({
+          $sort: {
+            [sortBy]: order === 'asc' ? 1 : -1,
+          },
+        });
+      }
+
+      if (limit) {
+        pipeline.push({
+          $limit: limit,
+        });
+      }
+
+      if (pipeline.length === 0) {
+        throw new Error('No valid sorting criteria provided.');
+      }
+
+      return this.fantasy24Model.aggregate(pipeline).exec();
+    }
     return this.fantasy24Model.find().sort(sortOption).limit(limit);
   }
 

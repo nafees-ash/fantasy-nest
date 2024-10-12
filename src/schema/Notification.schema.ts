@@ -6,7 +6,16 @@ export class Notification {
   type: string;
 
   @Prop({ required: true })
+  responsible: string;
+
+  @Prop({ required: true })
+  issue: string;
+
+  @Prop({ required: true })
   message: string;
+
+  @Prop({ required: false })
+  description: string;
 
   @Prop({ required: true })
   resolved: boolean;

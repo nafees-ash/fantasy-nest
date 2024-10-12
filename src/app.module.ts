@@ -10,6 +10,7 @@ import { AppController } from './app.controller';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth/auth.guard';
 import { NotificationModule } from './notification/notification.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { NotificationModule } from './notification/notification.module';
     InventoryModule,
     Fantasy23Module,
     Fantasy24Module,
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [

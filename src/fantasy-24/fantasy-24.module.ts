@@ -18,5 +18,6 @@ import {
   ],
   providers: [Fantasy24Service],
   controllers: [Fantasy24Controller],
+  exports: [MongooseModule],
 })
 export class Fantasy24Module {}

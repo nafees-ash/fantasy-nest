@@ -26,7 +26,7 @@ export class Fantasy24Controller {
 
   @Get()
   getFantasy24(
-    @Query('sortBy') sortBy: string,
+    @Query('sortBy') sortBy: 'lastMd' | 'longJump' | string,
     @Query('order') order: 'asc' | 'desc',
     @Query('limit') limit: number,
   ) {
